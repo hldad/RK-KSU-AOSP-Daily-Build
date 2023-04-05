@@ -32,35 +32,13 @@ jobs:
     steps:
     - name: Setup Configuration
       run: |
-        if [ ${{ inputs.IS_RELEASE }} = true ] ; then
-          echo "SOURCE_REPO=WeeAris/Realking_su_xiaomi_sm8250" >> $GITHUB_ENV
-          echo "BRANCH_NAME=${{ inputs.DEVICE_CODE }}" >> $GITHUB_ENV
-          if [ ${{ inputs.DEVICE_CODE }} = alioth ] ; then
-            echo "DEVICE_NAME=Alioth" >> $GITHUB_ENV
-            echo "DEF_CONFIG=vendor/alioth_defconfig" >> $GITHUB_ENV
-          elif [ ${{ inputs.DEVICE_CODE }} = munch ] ; then
-            echo "DEVICE_NAME=Munch" >> $GITHUB_ENV
-            echo "DEF_CONFIG=vendor/munch_defconfig" >> $GITHUB_ENV
-          elif [ ${{ inputs.DEVICE_CODE }} = apollo ] ; then
-            echo "DEVICE_NAME=Apollo" >> $GITHUB_ENV
-            echo "DEF_CONFIG=vendor/apollo_defconfig" >> $GITHUB_ENV
-          fi
-        else
           echo "SOURCE_REPO=Rohail33/Realking_xiaomi_sm8250" >> $GITHUB_ENV
-          if [ ${{ inputs.DEVICE_CODE }} = alioth ] ; then
+          if [true] ; then
             echo "BRANCH_NAME=T" >> $GITHUB_ENV
             echo "DEVICE_NAME=Alioth" >> $GITHUB_ENV
             echo "DEF_CONFIG=vendor/alioth_defconfig" >> $GITHUB_ENV
-          elif [ ${{ inputs.DEVICE_CODE }} = munch ] ; then
-            echo "BRANCH_NAME=${{ inputs.DEVICE_CODE }}" >> $GITHUB_ENV
-            echo "DEVICE_NAME=Munch" >> $GITHUB_ENV
-            echo "DEF_CONFIG=vendor/munch_defconfig" >> $GITHUB_ENV
-          elif [ ${{ inputs.DEVICE_CODE }} = apollo ] ; then
-            echo "BRANCH_NAME=${{ inputs.DEVICE_CODE }}" >> $GITHUB_ENV
-            echo "DEVICE_NAME=Apollo" >> $GITHUB_ENV
-            echo "DEF_CONFIG=vendor/apollo_defconfig" >> $GITHUB_ENV
           fi
-        fi
+        
         
 
     - name: Checkout Kernel Source Code
